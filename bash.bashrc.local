@@ -1,0 +1,50 @@
+#u see, i want a terminal that tells me something, note: 'tells me something', therefore i'll replace the default below
+fortune
+
+#my crazy nemesis prompts!
+#this geek_info function runs some bash commands and prints results
+function geek_info {
+	echo $(echo $PWD | awk -F/ '{print $NF}')
+}
+
+#in my prompt, i'll integrate the output from executing the function geek_info
+if [[ ${EUID} == 0 ]] ; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]`geek_info`|\[\033[01;34m\]< \t \[\033[01;31m\]\$>\[\033[00m\] '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]`geek_info`|\[\033[01;34m\]< \t \$>\[\033[00m\] '
+fi
+
+
+#my aliases
+alias c=clear
+alias l=ls
+alias irb="irb --readline -r irb/completion"
+alias ..="cd .."
+alias md=mkdir
+
+#for being able to access to ds 
+export CVSROOT=":ext:fixx@scar:/store/cvsroot"
+
+#play music matching given param under current directory recursively...
+function regex_jams {
+    #find  . -regex "$1" | sed 's/^/"/;s/$/"/' | xargs -I_ mplayer _
+    find  . -regex "$1" | sed 's/^/"/;s/$/"/' | xargs -I_ cvlc _
+}
+
+#master control volume :-) just pass volume level as a percentage
+function vol {
+    amixer -c 0 -- sset Master $1%
+}
+
+#modified cvlc -- ensures that cli vlc runs with remote control (interactive shell)
+alias cvlc="cvlc -I rc"
+
+export EDITOR=vim
+
+alias irc=irssi
+
+#speak the message...
+ruby /media/planet/the_goals/oracle.rb
+alias chrome=google-chrome 
+
+alias oracle="ruby /media/planet/the_goals/oracle.rb"
