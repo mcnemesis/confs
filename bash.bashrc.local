@@ -42,9 +42,17 @@ alias cvlc="cvlc -I rc"
 export EDITOR=vim
 
 alias irc=irssi
-
-#speak the message...
-ruby /media/planet/the_goals/oracle.rb
-alias chrome=google-chrome 
+alias color=colout
 
 alias oracle="ruby /media/planet/the_goals/oracle.rb"
+alias chrome=google-chrome 
+
+#a better java
+export JAVA="/usr/bin/java"
+
+#oh, and when u need to make timestamp file names or use those somewhere...
+alias timestamp="date +'%Y_%b_%d_%H_%M'"
+alias ss="sudo su"
+
+#Finally, my Oracle Speaks...
+oracle | color '.' random
