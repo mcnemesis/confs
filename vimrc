@@ -235,3 +235,5 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+"HeiTML! U know that Stone Age language is like HTML!
+au BufRead,BufNewFile *.hei set filetype=html
